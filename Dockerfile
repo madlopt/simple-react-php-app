@@ -10,4 +10,6 @@ RUN mkdir -p /var/www/react-php/vendor \
 
 RUN php composer.phar install --no-scripts --verbose --prefer-dist --no-progress --no-interaction --optimize-autoloader
 
+CMD ["php", "src/index.php"]
+
 
