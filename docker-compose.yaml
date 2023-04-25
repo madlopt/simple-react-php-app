@@ -1,0 +1,14 @@
+version: '3'
+services:
+  react-php-app:
+    image: madloptus/reactphpapp
+    ports:
+      - "8000:8000"
+    environment:
+      - PROJECT_NAME=react-php-test-app
+      - CONSOLE_LOG_TIMEOUT=5000
+      - METRICS_ROUTE=/metrics
+      - METRICS_PORT=8000
+      - METRICS_COMPONENT=applications
+      - METRICS_SOURCE=react-php-test-app
+      - METRICS_NAMESPACE=default
