@@ -4,6 +4,8 @@ services:
     image: madloptus/reactphpapp
     ports:
       - "8000:8000"
+    expose:
+      - 8000
     environment:
       - PROJECT_NAME=react-php-test-app
       - CONSOLE_LOG_TIMEOUT=5000
