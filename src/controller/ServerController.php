@@ -36,15 +36,19 @@ class ServerController
         $http = new HttpServer(function (ServerRequestInterface $request) use ($memoryPeakUsageGauge, $memoryUsageGauge, $registry, $counter, $config, $metrics) {
             $renderer = new RenderTextFormat();
             $result = $renderer->render($registry->getMetricFamilySamples());
-            if ($request->getUri()->getPath() !== $config->getMetrics()->getRoute()) {
+            if ($request->getUri()->getPath() === $config->getMetrics()->getRoute()) {
                 $metrics->updateHttpRequestsCounter($counter);
                 $metrics->updateMemoryUsageGauge($memoryUsageGauge);
                 $metrics->updateMemoryPeakUsageGauge($memoryPeakUsageGauge);
+
+                return Response::plaintext(
+                    $result
+                );
             }
-            return Response::plaintext(
-                $result
-            );
+
+            return Response::plaintext('');
         });
+
         $socket = new SocketServer('0.0.0.0:' . $config->getMetrics()->getPort());
         $http->listen($socket);
     }
