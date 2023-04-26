@@ -45,7 +45,7 @@ class ServerController
                 $result
             );
         });
-        $socket = new SocketServer('127.0.0.1:' . $config->getMetrics()->getPort());
+        $socket = new SocketServer('0.0.0.0:' . $config->getMetrics()->getPort());
         $http->listen($socket);
     }
 }

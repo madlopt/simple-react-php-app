@@ -1,7 +1,7 @@
 version: '3'
 services:
   react-php-app:
-    image: madloptus/reactphpapp
+    image: madloptus/reactphpapp:latest
     ports:
       - "8000:8000"
     expose:
