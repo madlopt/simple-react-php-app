@@ -41,7 +41,7 @@ class MetricsController
      */
     public function updateMemoryUsageGauge(Gauge $gauge): Gauge
     {
-        $gauge->set(memory_get_usage());
+        $gauge->set(memory_get_usage(true));
 
         return $gauge;
     }
@@ -52,7 +52,7 @@ class MetricsController
      */
     public function updateMemoryPeakUsageGauge(Gauge $gauge): Gauge
     {
-        $gauge->set(memory_get_peak_usage());
+        $gauge->set(memory_get_peak_usage(true));
 
         return $gauge;
     }

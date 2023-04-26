@@ -46,7 +46,12 @@ class ServerController
                 );
             }
 
-            return Response::plaintext('');
+            // Return a 404 response for any other endpoint
+            return new Response(
+                404,
+                array('Content-Type' => 'text/plain'),
+                'Not Found'
+            );
         });
 
         $socket = new SocketServer('0.0.0.0:' . $config->getMetrics()->getPort());
